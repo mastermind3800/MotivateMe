@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace MotivateMe.Web.Areas.Administration.Controllers
 {
-    public class StoriesController : AdminController
+    public class StoriesController : BaseAdminController
     {
         // GET: Administration/Stories
         public ActionResult Index()

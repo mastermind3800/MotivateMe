@@ -6,11 +6,12 @@ using System.Web.Mvc;
 
 namespace MotivateMe.Web.Areas.Administration.Controllers
 {
-   // [Authorize(Roles = GlobalConstants.AdministratorRoleName)] should be in MotivateMe.Common > GlobalConstants.cs
-    [Authorize(Roles = "Admin")]
-    [ValidateInput(false)]
-    public class AdminController : Controller
+    public class AdminController : BaseAdminController
     {
-      
+        // GET: Administration/Admin
+        public ActionResult Index()
+        {
+            return View();
+        }
     }
 }

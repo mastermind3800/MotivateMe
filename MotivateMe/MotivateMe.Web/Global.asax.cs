@@ -13,6 +13,7 @@ namespace MotivateMe.Web
         protected void Application_Start()
         {
             ViewEnginesConfiguration.RegisterViewEngines(ViewEngines.Engines);
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
