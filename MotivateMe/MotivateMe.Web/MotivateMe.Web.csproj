@@ -192,7 +192,10 @@
     <Compile Include="Areas\Administration\Controllers\RolesController.cs" />
     <Compile Include="Areas\Administration\Controllers\StoriesController.cs" />
     <Compile Include="Areas\Articles\ArticlesAreaRegistration.cs" />
+    <Compile Include="Areas\Articles\Controllers\ArticlesController.cs" />
+    <Compile Include="Areas\Forum\Controllers\ForumController.cs" />
     <Compile Include="Areas\Forum\ForumAreaRegistration.cs" />
+    <Compile Include="Areas\Stories\Controllers\StoriesController.cs" />
     <Compile Include="Areas\Stories\StoriesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -230,6 +233,15 @@
     <Content Include="Areas\Administration\Views\Roles\Create.cshtml" />
     <Content Include="Areas\Administration\Views\Roles\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Roles\ManageUserRoles.cshtml" />
+    <Content Include="Areas\Articles\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Articles\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Articles\Views\Articles\Index.cshtml" />
+    <Content Include="Areas\Forum\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Forum\Views\Forum\Index.cshtml" />
+    <Content Include="Areas\Stories\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Stories\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Stories\Views\Stories\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -284,15 +296,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Areas\Articles\Controllers\" />
     <Folder Include="Areas\Articles\Models\" />
-    <Folder Include="Areas\Articles\Views\Shared\" />
-    <Folder Include="Areas\Forum\Controllers\" />
     <Folder Include="Areas\Forum\Models\" />
-    <Folder Include="Areas\Forum\Views\Shared\" />
-    <Folder Include="Areas\Stories\Controllers\" />
     <Folder Include="Areas\Stories\Models\" />
-    <Folder Include="Areas\Stories\Views\Shared\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
