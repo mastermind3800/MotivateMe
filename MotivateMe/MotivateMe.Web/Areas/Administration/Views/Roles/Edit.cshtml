@@ -3,9 +3,9 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit Role</h2>
+<h2 class="page-header">Edit Role</h2>
 
-@Html.ActionLink("List Roles", "Index") | @Html.ActionLink("Manage User Role", "ManageUserRoles")
+@Html.ActionLink("List Roles", "Index", null, new { @class = "btn btn-primary" }) | @Html.ActionLink("Manage User Role", "ManageUserRoles", null, new { @class = "btn btn-primary" })
 <hr />
 @using (Html.BeginForm())
 {

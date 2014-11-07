@@ -1,9 +1,11 @@
-﻿
-@{
-    ViewBag.Title = "Admin";
+﻿@{
+    ViewBag.Title = "Admin Page";
 }
 
-<h2>This is the AdminControllerView </h2>
+<h2 class="page-header">Welcome to the @ViewBag.Title</h2>
 
-@Html.ActionLink("Manage Roles", "Index", "Roles", routeValues: new { Area = "Administration" }, htmlAttributes: new { title = "Manage" , @class = "btn btn-lg btn-success"})
-@Html.ActionLink("Manage Stories", "Index", "Stories", routeValues: new { Area = "Administration" }, htmlAttributes: new { title = "Manage", @class = "btn btn-lg btn-success" })
+@Html.ActionLink("Manage Roles", "Index", "Roles", routeValues: new { Area = "Administration" }, 
+                                                   htmlAttributes: new { title = "Manage" , @class = "btn btn-lg btn-success"})
+
+@Html.ActionLink("Manage Stories", "Index", "Stories", routeValues: new { Area = "Administration" }, 
+                                                       htmlAttributes: new { title = "Manage", @class = "btn btn-lg btn-success" })
