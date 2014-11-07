@@ -4,7 +4,7 @@
 
     public class ViewEnginesConfiguration
     {
-        internal static void RegisterViewEngines(System.Web.Mvc.ViewEngineCollection viewEngineCollection)
+        internal static void RegisterViewEngines(ViewEngineCollection viewEngineCollection)
         {
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
