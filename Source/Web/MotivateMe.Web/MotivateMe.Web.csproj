@@ -255,6 +255,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\MotivateMe.Data.Common\MotivateMe.Data.Common.csproj">
+      <Project>{39513122-8fd7-41eb-9d22-5c9a56ebe92a}</Project>
+      <Name>MotivateMe.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\MotivateMe.Data.Models\MotivateMe.Data.Models.csproj">
       <Project>{3bba60a4-18c4-4ca0-8786-b33bcc16eb00}</Project>
       <Name>MotivateMe.Data.Models</Name>
