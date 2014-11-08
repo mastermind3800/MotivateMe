@@ -3,34 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{F83E9DE7-BC4B-4294-8B41-974DD2DA1AE6}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{32284D2E-0F60-4476-84BC-D4A0514AA8C9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotivateMe.Web", "MotivateMe.Web\MotivateMe.Web.csproj", "{305CDF79-38D0-4944-85A0-C4AFAD485703}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotivateMe.Web.Tests", "MotivateMe.Web.Tests\MotivateMe.Web.Tests.csproj", "{15DCF956-455A-4D3B-BC2B-96183EB98759}"
-EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{305CDF79-38D0-4944-85A0-C4AFAD485703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{305CDF79-38D0-4944-85A0-C4AFAD485703}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{305CDF79-38D0-4944-85A0-C4AFAD485703}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{305CDF79-38D0-4944-85A0-C4AFAD485703}.Release|Any CPU.Build.0 = Release|Any CPU
-		{15DCF956-455A-4D3B-BC2B-96183EB98759}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{15DCF956-455A-4D3B-BC2B-96183EB98759}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{15DCF956-455A-4D3B-BC2B-96183EB98759}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{15DCF956-455A-4D3B-BC2B-96183EB98759}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{305CDF79-38D0-4944-85A0-C4AFAD485703} = {32284D2E-0F60-4476-84BC-D4A0514AA8C9}
-		{15DCF956-455A-4D3B-BC2B-96183EB98759} = {32284D2E-0F60-4476-84BC-D4A0514AA8C9}
 	EndGlobalSection
 EndGlobal
