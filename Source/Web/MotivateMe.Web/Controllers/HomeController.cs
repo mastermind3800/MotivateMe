@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper.QueryableExtensions;
+using MotivateMe.Web.ViewModels.Home;
+
 
 namespace MotivateMe.Web.Controllers
 {
@@ -20,7 +23,8 @@ namespace MotivateMe.Web.Controllers
 
         public ActionResult Index()
         {
-            var stories = this.stories.All();
+            var stories = this.stories.All().Project().To<IndexStoryViewModel>();
+
             return View(stories);
         }
 
