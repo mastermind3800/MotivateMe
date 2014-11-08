@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using MotivateMe.Web.Models;
+using MotivateMe.Data;
+using MotivateMe.Data.Models;
 
 namespace MotivateMe.Web
 {
