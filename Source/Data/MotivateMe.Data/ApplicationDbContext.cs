@@ -23,6 +23,8 @@ namespace MotivateMe.Data
 
         public IDbSet<Tag> Tags { get; set; }
 
+        public IDbSet<Story> Stories { get; set; }
+
 
         public override int SaveChanges()
         {
