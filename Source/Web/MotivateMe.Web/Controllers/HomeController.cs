@@ -12,12 +12,7 @@ namespace MotivateMe.Web.Controllers
     public class HomeController : Controller
     {
         private IRepository<Story> stories;
-        // Poor man's DI
-        public HomeController()
-            : this(new GenericRepository<Story>(new ApplicationDbContext()))
-        {
-
-        }
+       
         public HomeController(IRepository<Story> stories)
         {
             this.stories = stories;
