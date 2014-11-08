@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotivateMe.Web", "Web\Motiv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotivateMe.Data.Models", "Data\MotivateMe.Data.Models\MotivateMe.Data.Models.csproj", "{3BBA60A4-18C4-4CA0-8786-B33BCC16EB00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotivateMe.Data.Common", "Data\MotivateMe.Data.Common\MotivateMe.Data.Common.csproj", "{39513122-8FD7-41EB-9D22-5C9A56EBE92A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3BBA60A4-18C4-4CA0-8786-B33BCC16EB00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BBA60A4-18C4-4CA0-8786-B33BCC16EB00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BBA60A4-18C4-4CA0-8786-B33BCC16EB00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39513122-8FD7-41EB-9D22-5C9A56EBE92A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39513122-8FD7-41EB-9D22-5C9A56EBE92A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39513122-8FD7-41EB-9D22-5C9A56EBE92A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39513122-8FD7-41EB-9D22-5C9A56EBE92A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,5 +53,6 @@ Global
 		{498F74BF-5112-4805-A1FB-02F9EA8FF601} = {F5DD1FBD-96E5-4A1D-AF90-A4440EC965A4}
 		{9CC53EA9-017A-4E8C-B05E-E7CD2A22CE0E} = {0224A8ED-B2B3-47F7-BB87-33AFF84B3551}
 		{3BBA60A4-18C4-4CA0-8786-B33BCC16EB00} = {F5DD1FBD-96E5-4A1D-AF90-A4440EC965A4}
+		{39513122-8FD7-41EB-9D22-5C9A56EBE92A} = {F5DD1FBD-96E5-4A1D-AF90-A4440EC965A4}
 	EndGlobalSection
 EndGlobal
