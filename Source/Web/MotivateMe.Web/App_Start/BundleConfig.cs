@@ -20,7 +20,8 @@ namespace MotivateMe.Web
 
         private static void RegisterStyleBundles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/Content/kendo").Include(
+                "~/Content/kendo/kendo.common.min.css",
                         "~/Content/kendo/kendo.common-bootstrap.min.css",
                         "~/Content/kendo/kendo.blueopal.min.css"));
            
@@ -29,6 +30,8 @@ namespace MotivateMe.Web
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap.cerulean.css",
                       "~/Content/site.css"));
+             bundles.Add(new StyleBundle("~/Content/custom").Include(  
+                 "~/Content/site.css"));
         }
 
         private static void RegisterScryptBundles(BundleCollection bundles)

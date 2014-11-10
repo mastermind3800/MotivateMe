@@ -1,0 +1,31 @@
+﻿@using MotivateMe.Data.Models
+@model IEnumerable<Story>
+@{
+    ViewBag.Title = "Navigation";
+}
+
+<h2>Navigation</h2>
+
+@(Html.Kendo()
+.Calendar()
+.Name("calendar")
+.Min(DateTime.Now.AddDays(-30))
+)
+
+@(Html.Kendo()
+    .Grid<Story>(Model)
+    .Name("grid")
+    .Columns(columns => 
+    {
+        columns.Bound(st => st.Id);
+        columns.Bound(st => st.Title);
+        columns.Bound(st => st.Content);
+        columns.Bound(st => st.CreatedOn);
+       
+    })
+    .Sortable()
+    .Pageable(st=>st.Refresh(true))
+   // .Editable()
+    .Filterable()
+    .Groupable()
+)
