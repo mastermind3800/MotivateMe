@@ -8,19 +8,18 @@ using System.Threading.Tasks;
 
 namespace MotivateMe.Data.Models
 {
-    public class Story : AuditInfo, IDeletableEntity
+    public class Article : AuditInfo, IDeletableEntity
     {
         [Key]
         public int Id { get; set; }
 
-        [MaxLength]
-        public string Title { get; set; }
-
-        public StoryContent StoryContent { get; set; }
-
         public string AuthorId { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
+
+        public string Title { get; set; }
+
+        public string Content { get; set; }
 
         public bool IsDeleted { get; set; }
 

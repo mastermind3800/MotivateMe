@@ -25,6 +25,12 @@ namespace MotivateMe.Data
 
         public IDbSet<Story> Stories { get; set; }
 
+        public IDbSet<Article> Articles { get; set; }
+
+        public IDbSet<Tip> Tips { get; set; }
+
+        public IDbSet<Campaign> Campaigns { get; set; }
+
 
         public override int SaveChanges()
         {
