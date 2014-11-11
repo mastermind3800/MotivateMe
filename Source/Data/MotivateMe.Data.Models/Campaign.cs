@@ -1,6 +1,7 @@
 ﻿using MotivateMe.Data.Common.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace MotivateMe.Data.Models
         {
             this.participants = new HashSet<ApplicationUser>();
         }
-
+        [Key]
         public int Id { get; set; }
 
         public string InitiatiorId { get; set; }
@@ -28,17 +29,17 @@ namespace MotivateMe.Data.Models
 
         public string Info { get; set; }
 
-        public virtual ICollection<ApplicationUser> Participants
-        {
-            get
-            {
-                return this.participants;
-            }
-            set
-            {
-                this.participants = value;
-            }
-        }
+        //public virtual ICollection<ApplicationUser> Participants
+        //{
+        //    get
+        //    {
+        //        return this.participants;
+        //    }
+        //    set
+        //    {
+        //        this.participants = value;
+        //    }
+        //}
 
         public bool IsDeleted { get; set; }
 

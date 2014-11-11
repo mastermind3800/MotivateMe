@@ -21,15 +21,15 @@ namespace MotivateMe.Data
             return new ApplicationDbContext();
         }
 
-        public IDbSet<Tag> Tags { get; set; }
+        public virtual IDbSet<Tag> Tags { get; set; }
 
-        public IDbSet<Story> Stories { get; set; }
+        public virtual IDbSet<Story> Stories { get; set; }
 
-        public IDbSet<Article> Articles { get; set; }
+        public virtual IDbSet<Article> Articles { get; set; }
 
-        public IDbSet<Tip> Tips { get; set; }
+        public virtual IDbSet<Tip> Tips { get; set; }
 
-        public IDbSet<Campaign> Campaigns { get; set; }
+        public virtual IDbSet<Campaign> Campaigns { get; set; }
 
 
         public override int SaveChanges()
