@@ -13,6 +13,7 @@ namespace MotivateMe.Web.App_Start
     using System.Data.Entity;
     using MotivateMe.Data;
     using MotivateMe.Data.Common.Repository;
+    using MotivateMe.Data.Models;
 
     public static class NinjectWebCommon 
     {
@@ -65,6 +66,8 @@ namespace MotivateMe.Web.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<DbContext>().To<ApplicationDbContext>();
+
+            kernel.Bind(typeof(IRepository<Story>)).To(typeof(DeletableEntityRepository<Story>));
 
             kernel.Bind(typeof(IDeletableEntityRepository<>)).To(typeof(DeletableEntityRepository<>));
 
