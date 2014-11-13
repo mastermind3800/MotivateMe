@@ -67,6 +67,9 @@ namespace MotivateMe.Web.App_Start
         {
             kernel.Bind<DbContext>().To<ApplicationDbContext>();
 
+            kernel.Bind<IApplicationDbContext>().To<ApplicationDbContext>();
+            kernel.Bind<IMotivateMeData>().To<MotivateMeData>();
+
             kernel.Bind(typeof(IRepository<Story>)).To(typeof(DeletableEntityRepository<Story>));
 
             kernel.Bind(typeof(IDeletableEntityRepository<>)).To(typeof(DeletableEntityRepository<>));

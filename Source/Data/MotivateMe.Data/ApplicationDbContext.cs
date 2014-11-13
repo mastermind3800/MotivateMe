@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using MotivateMe.Data.Common.CodeFirstConventions;
 using MotivateMe.Data.Common.Models;
 using MotivateMe.Data.Migrations;
 using MotivateMe.Data.Models;
@@ -8,10 +9,16 @@ using System.Linq;
 
 namespace MotivateMe.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
+        {
+            
+        }
+
+         public ApplicationDbContext(string nameOrConnectionString)
+            : base(nameOrConnectionString)
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
@@ -35,6 +42,7 @@ namespace MotivateMe.Data
         public override int SaveChanges()
         {
             this.ApplyAuditInfoRules();
+            this.ApplyDeletableEntityRules();
             return base.SaveChanges();
         }
 
@@ -63,5 +71,45 @@ namespace MotivateMe.Data
             }
         }
 
+        private void ApplyDeletableEntityRules()
+        {
+            // Approach via @julielerman: http://bit.ly/123661P
+            foreach (
+                var entry in
+                    this.ChangeTracker.Entries()
+                        .Where(e => e.Entity is IDeletableEntity && (e.State == EntityState.Deleted)))
+            {
+                var entity = (IDeletableEntity)entry.Entity;
+
+                entity.DeletedOn = DateTime.Now;
+                entity.IsDeleted = true;
+                entry.State = EntityState.Modified;
+            }
+        }
+
+        public DbContext DbContext
+        {
+            get
+            {
+                return this;
+            }
+        }
+
+        public new IDbSet<T> Set<T>() where T : class
+        {
+            return base.Set<T>();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Add(new IsUnicodeAttributeConvention());
+
+            base.OnModelCreating(modelBuilder); // Without this call EntityFramework won't be able to configure the identity model
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+        }
     }
 }
