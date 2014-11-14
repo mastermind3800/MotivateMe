@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using MotivateMe.Data;
 using MotivateMe.Data.Models;
+using MotivateMe.Data.Common;
 
 namespace MotivateMe.Web.Controllers
 {
@@ -87,7 +88,7 @@ namespace MotivateMe.Web.Controllers
                 return HttpNotFound();
             }
             var articleAuthorId = article.AuthorId;
-            if (articleAuthorId != this.User.Identity.GetUserId())
+            if (articleAuthorId != this.User.Identity.GetUserId() && !this.User.IsInRole(GlobalConstants.AdministratorRoleName))
             {
                 TempData["Error"] = "You are not allowed to edit an article which is not yours!";
                 return RedirectToAction("Index");
