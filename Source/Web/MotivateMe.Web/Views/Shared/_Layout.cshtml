@@ -37,12 +37,16 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My Motivating Application</p>
-        </footer>
+       
     </div>
+    <footer class="footer-demo">
+        <div class="divider-demo"></div>
+        <div class="get-access">
+            <h2>&copy; @DateTime.Now.Year - My Motivating Application</h2>
+        </div>
+        <div class="divider-demo"></div>
+    </footer>
 
-    
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

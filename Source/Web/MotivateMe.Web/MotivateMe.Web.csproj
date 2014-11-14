@@ -216,6 +216,7 @@
     <Content Include="Content\bootstrap.cerulean.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\divider_line.png" />
     <Content Include="Content\kendo\Black\editor.png" />
     <Content Include="Content\kendo\Black\imagebrowser.png" />
     <Content Include="Content\kendo\Black\indeterminate.gif" />
@@ -1113,6 +1114,8 @@
     <Content Include="Views\Stories\Details.cshtml" />
     <Content Include="Views\Stories\Edit.cshtml" />
     <Content Include="Views\Stories\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Article.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Article.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
