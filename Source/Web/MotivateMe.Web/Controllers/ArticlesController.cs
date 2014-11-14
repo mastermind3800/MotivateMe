@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MotivateMe.Data;
 using MotivateMe.Data.Models;
 
@@ -53,13 +54,15 @@ namespace MotivateMe.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "Id,AuthorId,Title,Content")] Article article)
         {
             if (ModelState.IsValid)
             {
                 article.CreatedOn = DateTime.Now;
                 article.IsDeleted = false;
-                
+                article.AuthorId = this.User.Identity.GetUserId();
+
                 this.Data.Articles.Add(article);
                 this.Data.SaveChanges();
                 return RedirectToAction("Index");
@@ -70,17 +73,26 @@ namespace MotivateMe.Web.Controllers
         }
 
         // GET: Articles/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Article article = this.Data.Articles.GetById(id);
             if (article == null)
             {
                 return HttpNotFound();
             }
+            var articleAuthorId = article.AuthorId;
+            if (articleAuthorId != this.User.Identity.GetUserId())
+            {
+                TempData["Error"] = "You are not allowed to edit an article which is not yours!";
+                return RedirectToAction("Index");
+            }
+
             ViewBag.AuthorId = new SelectList(this.Data.Users.All(), "Id", "Email", article.AuthorId);
             return View(article);
         }
