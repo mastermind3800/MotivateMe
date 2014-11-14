@@ -21,18 +21,12 @@
             @Html.DisplayNameFor(model => model.Content)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DeletedOn)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.CreatedOn)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ModifiedOn)
         </th>
-        <th></th>
+        <th>Actions</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -41,16 +35,11 @@
             @Html.DisplayFor(modelItem => item.Author.Email)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+           @* @Html.DisplayFor(modelItem => item.Title)*@
+            @Html.ActionLink(item.Title, "Details", "Articles", new { Id = item.Id}, null /* html attributes */)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDeleted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeletedOn)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CreatedOn)
@@ -59,9 +48,9 @@
             @Html.DisplayFor(modelItem => item.ModifiedOn)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @*@Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-default" })*@ 
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class="btn btn-primary"}) 
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
