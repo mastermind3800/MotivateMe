@@ -90,7 +90,7 @@ namespace MotivateMe.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,StoryContent,AuthorId")] Story story)
+        public ActionResult Edit([Bind(Include = "Id,Title,StoryContent,AuthorId,CreatedOn")] Story story)
         {
             if (ModelState.IsValid)
             {
