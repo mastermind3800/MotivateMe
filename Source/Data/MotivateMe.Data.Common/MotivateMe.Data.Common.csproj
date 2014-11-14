@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="CodeFirstConventions\UnicodeAttributeConvention.cs" />
     <Compile Include="DataAnotations\IsUnicodeAttribute.cs" />
+    <Compile Include="GlobalConstants.cs" />
     <Compile Include="Models\AuditInfo.cs" />
     <Compile Include="Models\IAuditInfo.cs" />
     <Compile Include="Models\IDeletableEntity.cs" />
