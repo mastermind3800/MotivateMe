@@ -197,9 +197,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CampaignsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StoriesController.cs" />
+    <Compile Include="Controllers\TipsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1116,6 +1118,16 @@
     <Content Include="Views\Stories\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Article.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Article.cshtml" />
+    <Content Include="Views\Campaigns\Create.cshtml" />
+    <Content Include="Views\Campaigns\Delete.cshtml" />
+    <Content Include="Views\Campaigns\Details.cshtml" />
+    <Content Include="Views\Campaigns\Edit.cshtml" />
+    <Content Include="Views\Campaigns\Index.cshtml" />
+    <Content Include="Views\Tips\Create.cshtml" />
+    <Content Include="Views\Tips\Delete.cshtml" />
+    <Content Include="Views\Tips\Details.cshtml" />
+    <Content Include="Views\Tips\Edit.cshtml" />
+    <Content Include="Views\Tips\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

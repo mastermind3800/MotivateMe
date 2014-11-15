@@ -27,8 +27,15 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Articles", "Index", "Articles")</li>
+                    <li>@Html.ActionLink("Campaigns", "Index", "Campaigns")</li>
                     <li>@Html.ActionLink("Stories", "Index", "Stories")</li>
+                    @*<li>@Html.ActionLink("Tips", "Index", "Tips")</li>*@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (this.User.IsInRole(MotivateMe.Data.Common.GlobalConstants.AdministratorRoleName))
+                    {
+                        <li>@Html.ActionLink("Admin", "Navigation", new { controller = "Home", area = "Administration" })</li>
+                    }
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
