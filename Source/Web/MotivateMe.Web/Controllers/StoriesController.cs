@@ -18,12 +18,25 @@ namespace MotivateMe.Web.Controllers
         {
             this.Data = data;
         }
+        private int PageSize = 5;
 
         // GET: Stories
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            var stories = this.Data.Stories.All().Include(s => s.Author);
-            return View(stories.ToList());
+            var storiesCount = this.Data.Stories.All().Count();
+            int pagesCount = ((storiesCount - 1) / PageSize) + 1;
+            ViewBag.pagesCount = pagesCount;
+            ViewBag.currentPage = page;
+
+            var stories = this.Data.Stories
+                .All()
+                .Include(s => s.Author)
+                .OrderByDescending(s => s.CreatedOn)
+                .Skip((page-1) * PageSize)
+                .Take(PageSize)
+                .ToList();
+
+            return View(stories);
         }
 
         // GET: Stories/Details/5

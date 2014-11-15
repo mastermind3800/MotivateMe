@@ -2,6 +2,10 @@
 
 @{
     ViewBag.Title = "Index";
+    if (ViewBag.currentPage == null)
+    {
+        ViewBag.currentPage = 1;
+    } 
 }
 
 <h2>Index</h2>
@@ -9,7 +13,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table jumbotron">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Author.Email)
@@ -29,31 +33,65 @@
         <th> Actions </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author.Email)
-        </td>
-        <td>
-            @*@Html.DisplayFor(modelItem => item.Title)*@
-            @Html.ActionLink(item.Title, "Details", "Stories", new { Id = item.Id }, null /* html attributes */)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StoryContent)
-        </td>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedOn)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" }) 
-            @*@Html.ActionLink("Details", "Details", new { id=item.Id })*@ 
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <strong>@Html.DisplayFor(modelItem => item.Author.UserName)</strong> 
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Title)*@
+                @Html.ActionLink(item.Title, "Details", "Stories", new { Id = item.Id }, null /* html attributes */)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StoryContent)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedOn)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                @*@Html.ActionLink("Details", "Details", new { id=item.Id })*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<ul class="pagination">
+    @if ((int)ViewBag.currentPage == 1)
+    {
+        <li class="disabled"><a href="#">«</a></li>
+    }
+    else
+    {
+        <li><a href="?page=@((int)ViewBag.currentPage - 1)">«</a></li>
+    }
+    
+    @for (int i = 1; i <= (int)ViewBag.pagesCount; i++)
+    {
+        if (i == ViewBag.currentPage)
+        {
+            <li class="active"><a href="?page=@i">@i</a></li>
+        }
+        else
+        {
+            <li><a href="?page=@i">@i</a></li>
+        }
+
+    }
+    @if ((int)ViewBag.currentPage == ViewBag.pagesCount)
+    {
+        <li class="disabled"><a href="#">»</a></li>
+    }
+    else
+    {
+        <li><a href="?page=@((int)ViewBag.currentPage + 1)">»</a></li>
+    }
+    
+</ul>
