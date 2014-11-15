@@ -1,21 +1,18 @@
-﻿using MotivateMe.Data;
-using MotivateMe.Data.Common.Repository;
-using MotivateMe.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using AutoMapper.QueryableExtensions;
-using MotivateMe.Web.ViewModels.Home;
-
-
-namespace MotivateMe.Web.Controllers
+﻿namespace MotivateMe.Web.Controllers
 {
+    using AutoMapper.QueryableExtensions;
+
+    using MotivateMe.Data.Common.Repository;
+    using MotivateMe.Data.Models;
+    using MotivateMe.Web.ViewModels.Home;
+
+    using System.Web.Mvc;
+
+
     public class HomeController : Controller
     {
         private IRepository<Story> stories;
-       
+
         public HomeController(IRepository<Story> stories)
         {
             this.stories = stories;

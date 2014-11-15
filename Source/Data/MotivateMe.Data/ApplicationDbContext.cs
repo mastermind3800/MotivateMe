@@ -1,23 +1,26 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using MotivateMe.Data.Common.CodeFirstConventions;
-using MotivateMe.Data.Common.Models;
-using MotivateMe.Data.Migrations;
-using MotivateMe.Data.Models;
-using System;
-using System.Data.Entity;
-using System.Linq;
-
-namespace MotivateMe.Data
+﻿namespace MotivateMe.Data
 {
+    using Microsoft.AspNet.Identity.EntityFramework;
+
+    using MotivateMe.Data.Common.CodeFirstConventions;
+    using MotivateMe.Data.Common.Models;
+    using MotivateMe.Data.Migrations;
+    using MotivateMe.Data.Models;
+
+    using System;
+    using System.Data.Entity;
+    using System.Linq;
+
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            
+
         }
 
-         public ApplicationDbContext(string nameOrConnectionString)
+        public ApplicationDbContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());

@@ -1,5 +1,8 @@
 namespace MotivateMe.Data.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using MotivateMe.Data.Common;
     using MotivateMe.Data.Models;
     using System;
     using System.Collections.Generic;
@@ -9,50 +12,64 @@ namespace MotivateMe.Data.Migrations
 
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
-        private static Random rnd = new Random();
+        private Random rnd;
+        private UserManager<ApplicationUser> userManager;
 
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = true;
-
+            
             //TODO: Make false for Production
             this.AutomaticMigrationDataLossAllowed = true;
+
+            this.rnd = new Random();
         }
 
         protected override void Seed(ApplicationDbContext context)
         {
-            if (context.Articles.Any() || context.Campaigns.Any() || context.Stories.Any())
+            if (context.Articles.Any() || context.Campaigns.Any() || context.Stories.Any() || context.Users.Any())
             {
                 return;
             }
             var usernamesUnique = new HashSet<string>();
+
+            this.userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
+            this.SeedRoles(context);
 
             for (int i = 0; usernamesUnique.Count <= 20; i++)
             {
                 usernamesUnique.Add(GetRandomName());
             }
 
-            context.SaveChanges();
+           
+
             var users = new List<ApplicationUser>();
             var usernamesUniqueList = usernamesUnique.ToList();
-            for (int i = 0; i < usernamesUnique.Count; i++)
-            {
+            this.SeedUsers(context, usernamesUniqueList);
 
-                users.Add(new ApplicationUser() { Email = usernamesUniqueList[i] + "@pesho.com", UserName = usernamesUniqueList[i] });
-            }
+            //for (int i = 0; i < usernamesUnique.Count; i++)
+            //{
 
+            //    users.Add(new ApplicationUser() { Email = usernamesUniqueList[i] + "@pesho.com", UserName = usernamesUniqueList[i] });
+            //} 
+            
+            context.SaveChanges();
+
+            // Create collections 
             var stories = new List<Story>();
             var articles = new List<Article>();
             var campaigns = new List<Campaign>();
             var tips = new List<Tip>();
+            var dbUsers = context.Users.ToList();
 
             for (int i = 0; i < 20; i++)
             {
-                var author = users[rnd.Next(0, users.Count)];
+                var author = dbUsers[rnd.Next(0, users.Count)];
                 var authorId = context.Users.Where(u => u.UserName == author.UserName).Select(user => user.Id).FirstOrDefault();
                 stories.Add(new Story() { Author = author, AuthorId = authorId, CreatedOn = GetRandomDate(), Title = GetRandomTitle(), StoryContent = new StoryContent() { After = GetRandomContent(), Before = GetRandomContent(), Conclusion = GetRandomContent(), Experience = GetRandomParagraph() }, IsDeleted = false });
                 articles.Add(new Article() { Author = author, AuthorId = authorId, CreatedOn = GetRandomDate(), Title = GetRandomTitle(), Content = GetRandomParagraph(), IsDeleted = false });
-                campaigns.Add(new Campaign() { Initiator = author, InitiatiorId = authorId, CreatedOn = GetRandomDate(), Title = GetRandomTitle(), Goal = GetRandomTitle(), Info = GetRandomParagraph(), IsDeleted = false });
+                campaigns.Add(new Campaign() { Author = author, AuthorId = authorId, CreatedOn = GetRandomDate(), Title = GetRandomTitle(), Goal = GetRandomTitle(), Info = GetRandomParagraph(), IsDeleted = false });
                 tips.Add(new Tip() { Author = author, AuthorId = authorId, CreatedOn = GetRandomDate(), Content = GetRandomContent(), IsDeleted = false });
             }
 
@@ -88,6 +105,41 @@ namespace MotivateMe.Data.Migrations
             //GetRandomName();
         }
 
+        private void SeedRoles(ApplicationDbContext context)
+        {
+            context.Roles.AddOrUpdate(x => x.Name, new IdentityRole(GlobalConstants.AdministratorRoleName));
+            context.SaveChanges();
+        }
+
+        private void SeedUsers(ApplicationDbContext context, IList<string> uniqueUsernames)
+        {
+            if (context.Users.Any())
+            {
+                return;
+            }
+
+            for (int i = 0; i < uniqueUsernames.Count; i++)
+            {
+                var username = uniqueUsernames[i];
+                var user = new ApplicationUser
+                {
+                    Email = string.Format("{0}@{1}.com", username, "mysite"),
+                    UserName = username
+                };
+
+                this.userManager.Create(user, "123456");
+            }
+
+            var adminUser = new ApplicationUser
+            {
+                Email = "admin@mysite.com",
+                UserName = "Administrator"
+            };
+
+            this.userManager.Create(adminUser, "admin123456");
+
+            this.userManager.AddToRole(adminUser.Id, GlobalConstants.AdministratorRoleName);
+        }
         private DateTime GetRandomDate()
         {
             DateTime start = new DateTime(2012, 1, 1);
