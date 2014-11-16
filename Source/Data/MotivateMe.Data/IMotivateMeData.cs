@@ -17,6 +17,8 @@ namespace MotivateMe.Data
 
         IDeletableEntityRepository<Campaign> Campaigns { get; }
 
+        IDeletableEntityRepository<Comment> Comments { get; }
+
         IDeletableEntityRepository<Story> Stories { get; }
 
         IDeletableEntityRepository<Tag> Tags { get; }

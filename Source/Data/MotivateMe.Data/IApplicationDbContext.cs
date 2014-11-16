@@ -17,6 +17,8 @@ namespace MotivateMe.Data
 
         IDbSet<Campaign> Campaigns { get; set; }
 
+        IDbSet<Comment> Comments { get; set; }
+
         IDbSet<Story> Stories { get; set; }
 
         IDbSet<Tag> Tags { get; set; }

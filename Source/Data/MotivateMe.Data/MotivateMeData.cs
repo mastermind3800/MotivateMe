@@ -53,6 +53,11 @@ namespace MotivateMe.Data
             get { return this.GetDeletableEntityRepository<Campaign>(); }
         }
 
+        public IDeletableEntityRepository<Comment> Comments
+        {
+            get { return this.GetDeletableEntityRepository<Comment>(); }
+        }
+
         public IDeletableEntityRepository<Story> Stories
         {
             get { return this.GetDeletableEntityRepository<Story>(); }

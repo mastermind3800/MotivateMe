@@ -1,82 +1,106 @@
-﻿@model MotivateMe.Data.Models.Campaign
-
+﻿@model MotivateMe.Web.ViewModels.Campaigns.CampaignDetailsViewModel
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Campaign Details";
 }
 
 <h2>Details</h2>
-
-<div>
-    <h4>Campaign</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.InitiatiorId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.InitiatiorId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Goal)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Goal)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Info)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Info)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsDeleted)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DeletedOn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DeletedOn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedOn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedOn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedOn)
-        </dd>
-
-    </dl>
+<div class="jumbotron body-content">
+    <div class="row">
+        <h3>@Model.Title</h3>
+        <p> Initiated by: @Model.AuthorName</p>
+    </div>
+    <div class="row"> @Model.Goal</div>
+    <div class="row"> @Model.Info</div>
+    <br/>
+    <div class="row">
+        <p>Comment Section: </p>
+        <div class="body-content">
+            @if (!@Model.Comments.Any())
+            {
+                <p> No Comments</p>
+            }
+            else
+            {
+                foreach (var comment in @Model.Comments)
+                {
+                    <div><strong>@comment.AuthorName:</strong> @comment.Content</div>
+                }
+            }
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+@*<div>
+        <h4>Campaign</h4>
+        <hr />
+        <dl class="dl-horizontal jumbotron body-content">
+            <dt>
+                @Html.DisplayNameFor(model => model.InitiatiorId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.InitiatiorId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Goal)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Goal)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Info)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Info)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsDeleted)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DeletedOn)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DeletedOn)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreatedOn)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedOn)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using MotivateMe.Data;
-using MotivateMe.Data.Models;
-
-namespace MotivateMe.Web.Controllers
+﻿namespace MotivateMe.Web.Controllers
 {
+    using AutoMapper.QueryableExtensions;
+    using MotivateMe.Data;
+    using MotivateMe.Data.Models;
+    using MotivateMe.Web.ViewModels.Campaigns;
+    using System.Linq;
+    using System.Net;
+    using System.Web.Mvc;
+
     public class CampaignsController : BaseController
     {
         public CampaignsController(IMotivateMeData data)
@@ -32,11 +29,29 @@ namespace MotivateMe.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Campaign campaign = this.Data.Campaigns.GetById(id);
+
+            // Campaign campaign = this.Data.Campaigns.GetById(id);
+            var campaign = this.Data
+                .Campaigns
+                .All()
+                .Where(c => c.Id == id)
+                .Project()
+                .To<CampaignDetailsViewModel>()
+                .FirstOrDefault();
+
             if (campaign == null)
             {
-                return HttpNotFound();
+                return HttpNotFound("Campaign Not Found");
             }
+
+            campaign.Comments = this.Data
+                .Comments
+                .All()
+                .Where(c => c.CampaignId == campaign.Id)
+                .Project()
+                .To<CommentViewModel>()
+                .ToList();
+
             return View(campaign);
         }
 

@@ -41,6 +41,7 @@
 
         public virtual IDbSet<Campaign> Campaigns { get; set; }
 
+        public virtual IDbSet<Comment> Comments { get; set; }
 
         public override int SaveChanges()
         {
