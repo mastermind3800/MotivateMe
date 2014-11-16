@@ -1,22 +1,30 @@
-﻿using MotivateMe.Data;
-using MotivateMe.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace MotivateMe.Web.Controllers
+﻿namespace MotivateMe.Web.Controllers
 {
+    using MotivateMe.Data;
+    using MotivateMe.Data.Models;
+
+    using Microsoft.AspNet.Identity;
+
+    using System;
+    using System.Web.Mvc;
+    using System.Web.Routing;
+
     public abstract class BaseController : Controller
     {
+        protected IMotivateMeData Data { get; private set; }
+
+        protected ApplicationUser CurrentUser { get; set; }
+
         public BaseController(IMotivateMeData data)
         {
             this.Data = data;
         }
 
-        protected IMotivateMeData Data { get; set; }
+        protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)
+        {
+            this.CurrentUser = this.Data.Users.GetById(this.User.Identity.GetUserId());
 
-        protected ApplicationUser CurrentUser { get; set; }
+            return base.BeginExecute(requestContext, callback, state);
+        }
     }
 }
