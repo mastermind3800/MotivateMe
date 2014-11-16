@@ -15,8 +15,9 @@
 </p>
 <table class="table jumbotron">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Author.Email)
+        <th> 
+           Author
+            @*@Html.DisplayNameFor(model => model.Author.Email)*@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -30,7 +31,7 @@
         <th>
             @Html.DisplayNameFor(model => model.ModifiedOn)
         </th>
-        <th> Actions </th>
+        <th> Actions </th>  
     </tr>
 
     @foreach (var item in Model)

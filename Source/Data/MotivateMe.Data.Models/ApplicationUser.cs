@@ -13,6 +13,7 @@
         private ICollection<Article> articles;
         private ICollection<Tip> tips;
         private ICollection<Story> stories;
+        private ICollection<Comment> comments;
 
         public ApplicationUser()
         {
@@ -22,6 +23,7 @@
             this.stories = new HashSet<Story>();
             this.tips = new HashSet<Tip>();
             this.articles = new HashSet<Article>();
+            this.comments = new HashSet<Comment>();
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -52,6 +54,12 @@
         {
             get { return this.campaigns; }
             set { this.campaigns = value; }
+        }
+
+        public virtual ICollection<Comment> Comments
+        {
+            get { return this.comments; }
+            set { this.comments = value; }
         }
 
         public virtual ICollection<Story> Stories

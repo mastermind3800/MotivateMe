@@ -2,18 +2,20 @@
 {
     using MotivateMe.Data.Common.Models;
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     public class Campaign : AuditInfo, IDeletableEntity
     {
-        //private ICollection<ApplicationUser> participants;
+        private ICollection<Comment> comments;
 
         public Campaign()
         {
-            //this.participants = new HashSet<ApplicationUser>();
+            this.comments = new HashSet<Comment>();
         }
+
         [Key]
         public int Id { get; set; }
 
@@ -35,17 +37,11 @@
         [MaxLength(2500)]
         public string Info { get; set; }
 
-        //public virtual ICollection<ApplicationUser> Participants
-        //{
-        //    get
-        //    {
-        //        return this.participants;
-        //    }
-        //    set
-        //    {
-        //        this.participants = value;
-        //    }
-        //}
+        public virtual ICollection<Comment> Comments
+        {
+            get { return this.comments; }
+            set { this.comments = value; }
+        }
 
         [DefaultValue(false)]
         [Index]
