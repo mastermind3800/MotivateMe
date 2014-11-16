@@ -36,11 +36,12 @@
                         {
                             Source = i.GetGenericArguments()[0],
                             Destination = t
-                        });
+                        }).ToArray();
 
             foreach (var map in maps)
             {
                 Mapper.CreateMap(map.Source, map.Destination);
+                Mapper.CreateMap(map.Destination, map.Source);
             }
         }
 

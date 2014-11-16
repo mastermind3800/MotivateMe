@@ -1,0 +1,36 @@
+﻿@using MotivateMe.Web.ViewModels.Tips
+@{
+    ViewBag.Title = "All Tips";
+}
+
+<h2>@ViewBag.Title</h2>
+@(Html.Kendo()
+    .ListView<ListTipViewModel>()
+    .TagName("div")
+    .HtmlAttributes(new { @class = "jumbotron body-container"})
+    .Name("all-tips")
+    .Pageable()
+    .ClientTemplateId("all-tips-template")
+    .DataSource(dataSource =>
+        {
+            dataSource
+                .ServerOperation(true)
+                .PageSize(5)
+                .Read(read => read.Action("ReadTips", "Tips"));
+
+        }
+    )
+)
+
+<script id="all-tips-template" type="text/x-kendo-tmpl">
+    <div class="row">
+        <div class="col-md-8">
+            #= Content #
+        </div>
+        <div class="col-md-2">
+          by<strong>  #= AuthorName #</strong>
+        </div>
+    </div>
+    <div class="divider-demo"></div>
+    <br />
+</script>

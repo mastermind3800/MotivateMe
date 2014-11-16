@@ -212,7 +212,9 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Campaigns\CampaignDetailsViewModel.cs" />
     <Compile Include="ViewModels\Campaigns\CommentViewModel.cs" />
+    <Compile Include="ViewModels\Campaigns\CreateCampaignViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexStoryViewModel.cs" />
+    <Compile Include="ViewModels\Tips\ListTipViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -968,7 +970,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -1132,6 +1136,10 @@
     <Content Include="Views\Tips\Edit.cshtml" />
     <Content Include="Views\Tips\Index.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DropDownList.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MultiLineText.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SingleLineText.cshtml" />
+    <Content Include="Views\Tips\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

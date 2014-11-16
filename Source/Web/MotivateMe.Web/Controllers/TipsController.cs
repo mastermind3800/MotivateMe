@@ -1,22 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using MotivateMe.Data;
-using MotivateMe.Data.Models;
-
-namespace MotivateMe.Web.Controllers
+﻿namespace MotivateMe.Web.Controllers
 {
+    using AutoMapper.QueryableExtensions;
+    using Kendo.Mvc.UI;
+    using Kendo.Mvc.Extensions;
+    using MotivateMe.Data;
+    using MotivateMe.Data.Models;
+    using MotivateMe.Web.ViewModels.Tips;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Web.Mvc;
+
     public class TipsController : BaseController
     {
         public TipsController(IMotivateMeData data)
             : base(data)
         {
-            
+
+        }
+        [Authorize]
+        public ActionResult All()
+        {
+            var tips = this.Data.Tips.All().Include(t => t.Author);
+            return View(tips.ToList());
         }
 
         // GET: Tips
@@ -24,6 +30,18 @@ namespace MotivateMe.Web.Controllers
         {
             var tips = this.Data.Tips.All().Include(t => t.Author);
             return View(tips.ToList());
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult ReadTips([DataSourceRequest]DataSourceRequest request)
+        {
+            var tips = this.Data
+                .Tips
+                .All()
+                .Project()
+                .To<ListTipViewModel>();
+
+            return Json(tips.ToDataSourceResult(request));
         }
 
         // GET: Tips/Details/5

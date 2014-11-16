@@ -1,9 +1,11 @@
 ﻿namespace MotivateMe.Web.Controllers
 {
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using MotivateMe.Data;
     using MotivateMe.Data.Models;
     using MotivateMe.Web.ViewModels.Campaigns;
+    using System;
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
@@ -56,6 +58,7 @@
         }
 
         // GET: Campaigns/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -65,13 +68,19 @@
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,InitiatiorId,Title,Goal,Info,IsDeleted,DeletedOn,CreatedOn,ModifiedOn")] Campaign campaign)
+        public ActionResult Create(CreateCampaignViewModel campaign)
         {
-            if (ModelState.IsValid)
+            if (campaign != null && ModelState.IsValid)
             {
-                this.Data.Campaigns.Add(campaign);
+                var dbCampaign = Mapper.Map<Campaign>(campaign);
+                dbCampaign.AuthorId = this.CurrentUser.Id;
+                dbCampaign.CreatedOn = DateTime.Now;
+                
+                this.Data.Campaigns.Add(dbCampaign);
                 this.Data.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 

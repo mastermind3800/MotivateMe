@@ -11,9 +11,7 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.InitiatiorId)
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -23,26 +21,17 @@
         <th>
             @Html.DisplayNameFor(model => model.Info)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DeletedOn)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.CreatedOn)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedOn)
-        </th>
+       
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.InitiatiorId)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
@@ -52,18 +41,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Info)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDeleted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeletedOn)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.CreatedOn)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedOn)
-        </td>
+        
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
