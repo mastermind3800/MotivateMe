@@ -18,7 +18,7 @@ namespace MotivateMe.Web.Controllers
         public ArticlesController(IMotivateMeData data)
             : base(data)
         {
-            this.Data = data;
+            
         }
 
         // GET: Articles

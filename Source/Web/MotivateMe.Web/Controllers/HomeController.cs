@@ -1,4 +1,4 @@
-﻿namespace MotivateMe.Web.Controllers
+﻿  namespace MotivateMe.Web.Controllers
 {
     using AutoMapper.QueryableExtensions;
 
@@ -7,6 +7,7 @@
     using MotivateMe.Web.ViewModels.Home;
 
     using System.Web.Mvc;
+    using System.Linq;
 
 
     public class HomeController : Controller
@@ -20,7 +21,12 @@
 
         public ActionResult Index()
         {
-            var stories = this.stories.All().Project().To<IndexStoryViewModel>();
+            var stories = this.stories.All()
+                .OrderByDescending(s => s.CreatedOn)
+                .Take(6)
+                .Project()
+                .To<IndexStoryViewModel>()
+                .ToList();
 
             return View(stories);
         }

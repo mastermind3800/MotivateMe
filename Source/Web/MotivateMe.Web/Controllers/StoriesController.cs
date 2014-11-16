@@ -16,7 +16,7 @@ namespace MotivateMe.Web.Controllers
         public StoriesController(IMotivateMeData data)
             : base(data)
         {
-            this.Data = data;
+           
         }
         private int PageSize = 5;
 

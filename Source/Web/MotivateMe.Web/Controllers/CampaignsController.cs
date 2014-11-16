@@ -16,7 +16,7 @@ namespace MotivateMe.Web.Controllers
         public CampaignsController(IMotivateMeData data)
             : base(data)
         {
-            this.Data = data;
+           
         }
 
         // GET: Campaigns

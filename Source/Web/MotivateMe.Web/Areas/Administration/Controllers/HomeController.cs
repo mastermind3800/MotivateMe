@@ -17,7 +17,7 @@ namespace MotivateMe.Web.Areas.Administration.Controllers
         public HomeController(IMotivateMeData data)
             : base(data)
         {
-            this.Data = data;
+            
         }
 
         // GET: Administration/Home

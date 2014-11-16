@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MotivateMe.Web.ViewModels.Home.IndexStoryViewModel>
+﻿@model IList<MotivateMe.Web.ViewModels.Home.IndexStoryViewModel>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -6,12 +6,13 @@
 <div class="jumbotron">
     
     
-    <h2>Top Stories</h2>
+    <h2>Newest Stories</h2>
     @foreach (var story in Model)
     {
-        <div>
-            <h3>@story.Title</h3>
-            <p>@story.Content</p>
+        <div class="row jumbotron body-content">
+            <h3><a href="\Stories\Details\@story.Id">@story.Title</a></h3>
+            <p>@story.ShortContent</p>
+            <div>Created By <strong>@story.AuthorName</strong> at <span class="label label-primary">@story.CreatedOn</span></div>
         </div>
     }
        

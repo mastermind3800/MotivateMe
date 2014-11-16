@@ -16,7 +16,7 @@ namespace MotivateMe.Web.Controllers
         public TipsController(IMotivateMeData data)
             : base(data)
         {
-            this.Data = data;
+            
         }
 
         // GET: Tips
