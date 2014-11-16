@@ -5,6 +5,7 @@
     using MotivateMe.Data;
     using MotivateMe.Data.Models;
     using MotivateMe.Web.ViewModels.Campaigns;
+    using MotivateMe.Web.ViewModels.Comments;
     using System;
     using System.Linq;
     using System.Net;
@@ -50,6 +51,7 @@
                 .Comments
                 .All()
                 .Where(c => c.CampaignId == campaign.Id)
+                .OrderByDescending(c=>c.CreatedOn)
                 .Project()
                 .To<CommentViewModel>()
                 .ToList();

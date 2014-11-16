@@ -198,6 +198,7 @@
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CampaignsController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -211,8 +212,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Campaigns\CampaignDetailsViewModel.cs" />
-    <Compile Include="ViewModels\Campaigns\CommentViewModel.cs" />
+    <Compile Include="ViewModels\Comments\CommentViewModel.cs" />
     <Compile Include="ViewModels\Campaigns\CreateCampaignViewModel.cs" />
+    <Compile Include="ViewModels\Comments\PostCommentViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexStoryViewModel.cs" />
     <Compile Include="ViewModels\Tips\ListTipViewModel.cs" />
   </ItemGroup>
@@ -466,6 +468,8 @@
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -1140,11 +1144,14 @@
     <Content Include="Views\Shared\EditorTemplates\MultiLineText.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SingleLineText.cshtml" />
     <Content Include="Views\Tips\All.cshtml" />
+    <Content Include="Views\Campaigns\_PostCommentPartial.cshtml" />
+    <Content Include="Views\Shared\_CommentPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\Administration\Views\BaseAdmin\" />
+    <Folder Include="Views\Comments\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

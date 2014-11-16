@@ -3,6 +3,7 @@
     using AutoMapper;
     using MotivateMe.Data.Models;
     using MotivateMe.Web.Infrastructure.Mapping;
+    using MotivateMe.Web.ViewModels.Comments;
     using System;
     using System.Collections.Generic;
 

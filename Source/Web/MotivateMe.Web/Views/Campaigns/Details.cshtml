@@ -1,4 +1,5 @@
-﻿@model MotivateMe.Web.ViewModels.Campaigns.CampaignDetailsViewModel
+﻿@using MotivateMe.Web.ViewModels.Comments
+@model MotivateMe.Web.ViewModels.Campaigns.CampaignDetailsViewModel
 @{
     ViewBag.Title = "Campaign Details";
 }
@@ -11,24 +12,38 @@
     </div>
     <div class="row"> @Model.Goal</div>
     <div class="row"> @Model.Info</div>
-    <br/>
+    <br />
     <div class="row">
         <p>Comment Section: </p>
-        <div class="body-content">
-            @if (!@Model.Comments.Any())
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Html.Partial("_PostCommentPartial", new PostCommentViewModel(Model.Id))
+            <div class="divider-demo"></div>
+        }
+
+        <div id="comments" class="body-content">
+            @*@if (!@Model.Comments.Any())
             {
                 <p> No Comments</p>
             }
             else
-            {
-                foreach (var comment in @Model.Comments)
+            {*@
+                @foreach (var comment in @Model.Comments)
                 {
-                    <div><strong>@comment.AuthorName:</strong> @comment.Content</div>
+                    @Html.Partial("_CommentPartial", comment)
                 }
-            }
+           @* }*@
         </div>
     </div>
 </div>
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryajax")
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
 
 @*<div>
         <h4>Campaign</h4>

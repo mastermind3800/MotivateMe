@@ -1,4 +1,4 @@
-﻿namespace MotivateMe.Web.ViewModels.Campaigns
+﻿namespace MotivateMe.Web.ViewModels.Comments
 {
     using AutoMapper;
     using MotivateMe.Data.Models;
