@@ -1129,6 +1129,7 @@
     <Content Include="Views\Tips\Details.cshtml" />
     <Content Include="Views\Tips\Edit.cshtml" />
     <Content Include="Views\Tips\Index.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

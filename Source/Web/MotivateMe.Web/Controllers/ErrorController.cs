@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace MotivateMe.Web.Controllers
+﻿namespace MotivateMe.Web.Controllers
 {
+    using System.Web.Mvc;
+
     public class ErrorController : Controller
     {
-        // GET: Error
-        public ActionResult Index()
+
+        public ActionResult NotFound()
+        {
+            return View();
+        }
+
+        public ActionResult Error()
         {
             return View();
         }
