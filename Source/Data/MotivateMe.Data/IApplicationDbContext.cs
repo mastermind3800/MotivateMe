@@ -1,14 +1,8 @@
-﻿using MotivateMe.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MotivateMe.Data
+﻿namespace MotivateMe.Data
 {
+    using MotivateMe.Data.Models;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
     public interface IApplicationDbContext
     {
         IDbSet<ApplicationUser> Users { get; set; }
@@ -18,6 +12,8 @@ namespace MotivateMe.Data
         IDbSet<Campaign> Campaigns { get; set; }
 
         IDbSet<Comment> Comments { get; set; }
+
+        IDbSet<ForumPost> ForumPosts { get; set; }
 
         IDbSet<Story> Stories { get; set; }
 

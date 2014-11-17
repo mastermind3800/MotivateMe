@@ -27,6 +27,7 @@ namespace MotivateMe.Data.Migrations
 
         protected override void Seed(ApplicationDbContext context)
         {
+
             if (context.Articles.Any() || context.Campaigns.Any() || context.Stories.Any() || context.Users.Any())
             {
                 return;

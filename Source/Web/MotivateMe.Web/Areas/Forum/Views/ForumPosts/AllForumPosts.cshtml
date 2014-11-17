@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MotivateMe.Web.Areas.Forum.ViewModels.ForumPostViewModel>
+
+@{
+    ViewBag.Title = "All Forum Posts";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="jumbotron">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+
+    @foreach (var item in Model)
+    {<div class="body-content  text-center well well-lg">
+        <div class="row">
+            <h3><a href="/Forum/ForumPosts/Details/@item.Id">@item.Title</a></h3>
+            <div class="row">
+
+                <h5>by @item.AuthorName</h5>
+
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var tag in item.Tags)
+            {
+                <span class="label label-primary">@tag.Name</span>
+            }
+        </div>
+        <div class="row">
+            @Html.DisplayFor(modelItem => item.Content)
+        </div>
+        @if (this.User.Identity.Name == @item.AuthorName || this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        }
+
+    </div>
+        <div class="divider-demo"></div>
+    }
+
+
+</div>

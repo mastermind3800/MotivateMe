@@ -39,6 +39,8 @@
 
         public virtual IDbSet<Tip> Tips { get; set; }
 
+        public virtual IDbSet<ForumPost> ForumPosts { get; set; }
+
         public virtual IDbSet<Campaign> Campaigns { get; set; }
 
         public virtual IDbSet<Comment> Comments { get; set; }

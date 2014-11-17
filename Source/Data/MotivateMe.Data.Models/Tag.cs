@@ -2,21 +2,32 @@
 {
     using MotivateMe.Data.Common.Models;
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     public class Tag : AuditInfo, IDeletableEntity
     {
+        public ICollection<ForumPost> posts;
+
+        public Tag()
+        {
+            this.posts = new HashSet<ForumPost>();
+        }
+
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [MaxLength(50)]
         public string Name { get; set; }
 
+        public virtual ICollection<ForumPost> Posts
+        {
+            get { return this.posts; }
+            set { this.posts = value; }
+        }
+
         [Index]
-        [DefaultValue(false)]
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }

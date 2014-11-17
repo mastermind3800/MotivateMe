@@ -58,6 +58,11 @@ namespace MotivateMe.Data
             get { return this.GetDeletableEntityRepository<Comment>(); }
         }
 
+        public IDeletableEntityRepository<ForumPost> ForumPosts
+        {
+            get { return this.GetDeletableEntityRepository<ForumPost>(); }
+        }
+
         public IDeletableEntityRepository<Story> Stories
         {
             get { return this.GetDeletableEntityRepository<Story>(); }

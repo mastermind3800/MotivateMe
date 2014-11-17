@@ -21,6 +21,8 @@ namespace MotivateMe.Data
 
         IDeletableEntityRepository<Story> Stories { get; }
 
+        IDeletableEntityRepository<ForumPost> ForumPosts { get; }
+
         IDeletableEntityRepository<Tag> Tags { get; }
 
         IDeletableEntityRepository<Tip> Tips { get; }
