@@ -470,6 +470,8 @@
     <Content Include="Areas\Forum\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Forum\Views\ForumPosts\AllForumPosts.cshtml" />
     <Content Include="Areas\Forum\Views\ForumPosts\Create.cshtml" />
+    <Content Include="Areas\Forum\Views\ForumPosts\Details.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\_DisplayTagsPartial.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

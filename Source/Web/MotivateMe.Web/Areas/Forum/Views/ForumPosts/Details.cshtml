@@ -1,0 +1,19 @@
+﻿@model MotivateMe.Web.Areas.Forum.ViewModels.ForumPostViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="jumbotron">
+    <div class="row">
+        @Html.DisplayFor(m => m.Title)
+    </div>
+    @Html.Partial("_DisplayTagsPartial", Model.Tags)
+    <div class="row">
+        @Html.DisplayFor(m => m.AuthorName)
+    </div>
+    <div class="row">
+        @Html.DisplayFor(m => m.Content)
+    </div>
+</div>

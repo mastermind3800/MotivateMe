@@ -1,0 +1,7 @@
+﻿@model IEnumerable<MotivateMe.Data.Models.Tag>
+<div class="row">
+    @foreach (var tag in Model)
+    {
+        <span class="label label-primary">@tag.Name</span>
+    }
+</div>

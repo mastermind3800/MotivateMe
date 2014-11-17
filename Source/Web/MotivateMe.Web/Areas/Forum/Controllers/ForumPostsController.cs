@@ -17,11 +17,35 @@
         {
 
         }
+
         [HttpGet]
         [Authorize]
         public ActionResult Create()
         {
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                var post = this.Data.ForumPosts
+                    .All()
+                    .Project()
+                    .To<ForumPostViewModel>()
+                    .Where(p=> p.Id == id)
+                    .FirstOrDefault();
+
+                if (post == null)
+                {
+                    return new HttpStatusCodeResult(404);
+                }
+                
+                return View(post);
+            }
+
+            return new HttpStatusCodeResult(404);
         }
 
         [HttpPost]
