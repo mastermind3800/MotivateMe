@@ -1,19 +1,20 @@
-﻿using MotivateMe.Data;
-using MotivateMe.Data.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace MotivateMe.Web.Areas.Administration.Controllers
+﻿namespace MotivateMe.Web.Areas.Administration.Controllers
 {
-    
-        // [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
-        // [ValidateInput(false)]
-        public abstract class BaseAdminController : Controller
+    using MotivateMe.Data;
+    using MotivateMe.Data.Common;
+    using MotivateMe.Web.Controllers;
+
+    using System.Web.Mvc;
+
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
+    [ValidateInput(false)]
+    public abstract class BaseAdminController : BaseController
+    {
+        public BaseAdminController(IMotivateMeData data)
+            :base(data)
         {
-            protected ApplicationDbContext context = new ApplicationDbContext();
+
         }
-   
+    }
+
 }

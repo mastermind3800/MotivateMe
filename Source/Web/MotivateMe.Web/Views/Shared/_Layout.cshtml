@@ -21,17 +21,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Motivate Me", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Motivate Me", "Index", "Home", new { area = string.Empty }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Articles", "Index", "Articles")</li>
-                    <li>@Html.ActionLink("Campaigns", "Index", "Campaigns")</li>
-                    <li>@Html.ActionLink("Stories", "Index", "Stories")</li>
-                    @*<li>@Html.ActionLink("Tips", "Index", "Tips")</li>*@
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = string.Empty }, null)</li>
+                    <li>@Html.ActionLink("About", "About", "Home", new { area = string.Empty }, null)</li>
+                    <li>@Html.ActionLink("Articles", "Index", "Articles", new { area = string.Empty }, null)</li>
+                    <li>@Html.ActionLink("Campaigns", "Index", "Campaigns", new { area = string.Empty }, null)</li>
+                    <li>@Html.ActionLink("Stories", "Index", "Stories", new { area = string.Empty }, null)</li>
+                    @*<li>@Html.ActionLink("Tips", "Index", "Tips", new { area = string.Empty }, null)</li>*@
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = string.Empty }, null)</li>
+                    <li>@Html.ActionLink("Forum", "AllForumPosts", new { controller = "ForumPosts", area = "Forum" })</li>
                     @if (this.User.IsInRole(MotivateMe.Data.Common.GlobalConstants.AdministratorRoleName))
                     {
                         <li>@Html.ActionLink("Admin", "Navigation", new { controller = "Home", area = "Administration" })</li>
@@ -43,6 +44,20 @@
         </div>
     </div>
     <div class="container body-content">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-dismissable alert-success">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Well done!</strong> @TempData["SuccessMessage"]
+            </div>
+        } 
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Oops...</strong> @TempData["ErrorMessage"]
+            </div>
+        }
         @RenderBody()
         <hr />
        

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using MotivateMe.Data;
+using MotivateMe.Data.Common;
 using MotivateMe.Data.Models;
 using System;
 using System.Collections.Generic;
@@ -11,16 +13,24 @@ namespace MotivateMe.Web.Areas.Administration.Controllers
 {
     // http://www.dotnetfunda.com/articles/show/2898/working-with-roles-in-aspnet-identity-for-mvc
     // to fix the errors -> http://stackoverflow.com/questions/20841262/adding-a-role-for-user-after-registration-in-mvc-5
-    public class RolesController : BaseAdminController
-    {
 
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
+    [ValidateInput(false)]
+    public class RolesController : Controller
+    {
+        private ApplicationDbContext context;
+
+        public RolesController()
+        {
+            this.context =new ApplicationDbContext();
+        }
+       
         // GET: Administration/Roles
         public ActionResult Index()
         {
-            var roles = context.Roles.ToList();
+            var roles = this.context.Roles.ToList();
             return View(roles);
         }
-
 
         // GET: Administration/Roles/Create
         public ActionResult Create()
@@ -28,7 +38,6 @@ namespace MotivateMe.Web.Areas.Administration.Controllers
             return View();
         }
 
-        //
         // POST: Administration/Roles/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -66,7 +75,6 @@ namespace MotivateMe.Web.Areas.Administration.Controllers
             return View(thisRole);
         }
 
-        //
         // POST: /Roles/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]

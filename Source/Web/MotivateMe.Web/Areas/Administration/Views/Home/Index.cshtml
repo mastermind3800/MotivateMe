@@ -9,3 +9,8 @@
 
 @Html.ActionLink("Manage Stories", "Index", "Stories", routeValues: new { Area = "Administration" }, 
                                                        htmlAttributes: new { title = "Manage", @class = "btn btn-lg btn-success" })
+
+@Html.ActionLink("View Feedbacks", "ViewAll", "PageableFeedbackList", routeValues: new { Area = "Administration" },
+                                                       htmlAttributes: new { title = "View", @class = "btn btn-lg btn-success" })
+
+

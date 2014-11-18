@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace MotivateMe.Web.Areas.Administration.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : BaseAdminController
     {
         
 
@@ -18,6 +18,12 @@ namespace MotivateMe.Web.Areas.Administration.Controllers
             : base(data)
         {
             
+        }
+        public ActionResult Index()
+        {
+            var stories = this.Data.Stories.All();
+
+            return View(stories);
         }
 
         // GET: Administration/Home

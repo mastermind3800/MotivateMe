@@ -14,6 +14,7 @@
         private ICollection<Tip> tips;
         private ICollection<Story> stories;
         private ICollection<Comment> comments;
+        private ICollection<Feedback> feedbacks;
 
         public ApplicationUser()
         {
@@ -24,6 +25,7 @@
             this.tips = new HashSet<Tip>();
             this.articles = new HashSet<Article>();
             this.comments = new HashSet<Comment>();
+            this.feedbacks = new HashSet<Feedback>();
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -54,6 +56,12 @@
         {
             get { return this.campaigns; }
             set { this.campaigns = value; }
+        }
+
+        public virtual ICollection<Feedback> Feedback
+        {
+            get { return this.feedbacks; }
+            set { this.feedbacks = value; }
         }
 
         public virtual ICollection<Comment> Comments

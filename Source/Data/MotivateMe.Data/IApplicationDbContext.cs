@@ -17,6 +17,8 @@
 
         IDbSet<Story> Stories { get; set; }
 
+        IDbSet<Feedback> Feedbacks { get; set; }
+
         IDbSet<Tag> Tags { get; set; }
 
         IDbSet<Tip> Tips { get; set; }

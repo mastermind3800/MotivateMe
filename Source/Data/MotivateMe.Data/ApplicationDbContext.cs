@@ -33,6 +33,8 @@
 
         public virtual IDbSet<Tag> Tags { get; set; }
 
+        public virtual IDbSet<Feedback> Feedbacks { get; set; }
+
         public virtual IDbSet<Story> Stories { get; set; }
 
         public virtual IDbSet<Article> Articles { get; set; }
