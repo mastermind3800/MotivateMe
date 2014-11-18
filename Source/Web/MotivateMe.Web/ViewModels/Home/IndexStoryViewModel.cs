@@ -1,14 +1,11 @@
-﻿using AutoMapper;
-using MotivateMe.Data.Models;
-using MotivateMe.Web.Infrastructure.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace MotivateMe.Web.ViewModels.Home
+﻿namespace MotivateMe.Web.ViewModels.Home
 {
-    public class IndexStoryViewModel: IMapFrom<Story>, IHaveCustomMappings
+    using AutoMapper;
+    using MotivateMe.Data.Models;
+    using MotivateMe.Web.Infrastructure.Mapping;
+    using System;
+    
+    public class IndexStoryViewModel : IMapFrom<Story>, IHaveCustomMappings
     {
         public int Id { get; set; }
 

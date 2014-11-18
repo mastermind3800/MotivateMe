@@ -71,8 +71,6 @@
                     Content = input.Content,
                     AuthorId = userId,
                     Tags = dbTags
-                    // TODO: Tags
-                    // TODO: Author
                 };
 
                 this.Data.ForumPosts.Add(dbForumPost);
@@ -80,14 +78,11 @@
                 
                 TempData["SuccessMessage"] = "You created a post successfully!";
                 return this.RedirectToAction("AllForumPosts");
-            
-                //return this.RedirectToAction("Display", new { id = post.Id });
             }
 
             return this.View(input);
         }
 
-        // GET: Forum/ForumPosts
         public ActionResult AllForumPosts()
         {
             var forumPosts = this.Data.ForumPosts

@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using MotivateMe.Data;
-using MotivateMe.Data.Models;
-using MotivateMe.Data.Common;
-
-namespace MotivateMe.Web.Controllers
+﻿namespace MotivateMe.Web.Controllers
 {
+    using Microsoft.AspNet.Identity;
+    using MotivateMe.Data;
+    using MotivateMe.Data.Common;
+    using MotivateMe.Data.Models;
+    using System;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Web.Mvc;
+
     public class ArticlesController : BaseController
     {
         public ArticlesController(IMotivateMeData data)
@@ -21,32 +18,36 @@ namespace MotivateMe.Web.Controllers
             
         }
 
-        // GET: Articles
         public ActionResult Index()
         {
-            var articles = this.Data.Articles.All().Include(a => a.Author);
+            var articles = this.Data
+                .Articles
+                .All()
+                .Include(a => a.Author);
+
             return View(articles.ToList());
         }
 
-        // GET: Articles/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Article article = this.Data.Articles.GetById(id);
+
             if (article == null)
             {
                 return HttpNotFound();
             }
+
             return View(article);
         }
 
-        // GET: Articles/Create
         public ActionResult Create()
         {
-            ViewBag.AuthorId = new SelectList(this.Data.Users.All(), "Id", "Email");
+            //ViewBag.AuthorId = new SelectList(this.Data.Users.All(), "Id", "Email");
             return View();
         }
 

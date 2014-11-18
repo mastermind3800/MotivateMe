@@ -16,7 +16,6 @@
         [MaxLength(250)]
         public string Title { get; set; }
 
-        
         public StoryContent StoryContent { get; set; }
 
         [Required]

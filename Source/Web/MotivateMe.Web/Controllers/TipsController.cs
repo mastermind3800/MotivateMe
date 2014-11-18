@@ -18,6 +18,7 @@
         {
 
         }
+
         [Authorize]
         public ActionResult All()
         {
@@ -31,6 +32,7 @@
             var tips = this.Data.Tips.All().Include(t => t.Author);
             return View(tips.ToList());
         }
+
         [Authorize]
         [HttpPost]
         public ActionResult ReadTips([DataSourceRequest]DataSourceRequest request)

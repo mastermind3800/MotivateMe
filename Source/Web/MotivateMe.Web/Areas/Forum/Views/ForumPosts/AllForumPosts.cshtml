@@ -12,7 +12,8 @@
 
 
     @foreach (var item in Model)
-    {<div class="body-content  text-center well well-lg">
+    {
+        <div class="body-content  text-center well well-lg">
         <div class="row">
             <h3><a href="/Forum/ForumPosts/Details/@item.Id">@item.Title</a></h3>
             <div class="row">
@@ -32,8 +33,8 @@
         </div>
         @if (this.User.Identity.Name == @item.AuthorName || this.User.IsInRole(GlobalConstants.AdministratorRoleName))
         {
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class= "btn btn-default"})
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-default" })
         }
 
     </div>

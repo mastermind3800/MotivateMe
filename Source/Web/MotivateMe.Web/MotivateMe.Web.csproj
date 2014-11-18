@@ -463,7 +463,7 @@
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Administration\Views\Home\Navigation.cshtml" />
+    <Content Include="Areas\Administration\Views\Home\Stories.cshtml" />
     <Content Include="Areas\Administration\Views\Roles\Create.cshtml" />
     <Content Include="Areas\Administration\Views\Roles\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Roles\Index.cshtml" />
@@ -1166,8 +1166,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\Views\Admin\" />
-    <Folder Include="Areas\Administration\Views\BaseAdmin\" />
     <Folder Include="Views\Comments\" />
     <Folder Include="Views\Feedbacks\" />
   </ItemGroup>

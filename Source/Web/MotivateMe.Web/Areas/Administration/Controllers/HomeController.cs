@@ -27,7 +27,7 @@ namespace MotivateMe.Web.Areas.Administration.Controllers
         }
 
         // GET: Administration/Home
-        public ActionResult Navigation()
+        public ActionResult Stories()
         {
             var stories = this.Data.Stories.All();
 

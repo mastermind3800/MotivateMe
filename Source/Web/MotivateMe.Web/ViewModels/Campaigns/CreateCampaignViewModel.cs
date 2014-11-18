@@ -1,14 +1,10 @@
 ﻿namespace MotivateMe.Web.ViewModels.Campaigns
 {
     using MotivateMe.Data.Models;
-using MotivateMe.Web.Infrastructure.Mapping;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+    using MotivateMe.Web.Infrastructure.Mapping;
+    using System.ComponentModel.DataAnnotations;
 
-    public class CreateCampaignViewModel: IMapFrom<Campaign>
+    public class CreateCampaignViewModel : IMapFrom<Campaign>
     {
         [Required]
         [MaxLength(250)]

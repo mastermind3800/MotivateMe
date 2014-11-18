@@ -1,16 +1,10 @@
 ﻿@using MotivateMe.Data.Models
 @model IEnumerable<Story>
 @{
-    ViewBag.Title = "Navigation";
+    ViewBag.Title = "Stories";
 }
 
-<h2>Navigation</h2>
-
-@(Html.Kendo()
-.Calendar()
-.Name("calendar")
-.Min(DateTime.Now.AddDays(-30))
-)
+<h2>Stories</h2>
 
 @(Html.Kendo()
     .Grid<Story>(Model)

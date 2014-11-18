@@ -11,18 +11,17 @@ namespace MotivateMe.Data.Models
     public class ForumPost : AuditInfo, IDeletableEntity
     {
         public ICollection<Tag> tags;
-        //public ICollection<Vote> votes;
 
         public ForumPost()
         {
             this.tags = new HashSet<Tag>();
-            //this.votes = new HashSet<Vote>();
         }
 
         [Key]
         public int Id { get; set; }
 
         [MaxLength(100)]
+        [Required]
         public string Title { get; set; }
 
         public string AuthorId { get; set; }
@@ -35,12 +34,7 @@ namespace MotivateMe.Data.Models
             set { this.tags = value; }
         }
 
-        //public virtual ICollection<Vote> Votes
-        //{
-        //    get { return this.votes; }
-        //    set { this.votes = value; }
-        //}
-
+        [Required]
         public string Content { get; set; }
 
         public bool IsDeleted { get; set; }
