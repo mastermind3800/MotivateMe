@@ -1,39 +1,65 @@
-﻿  namespace MotivateMe.Web.Controllers
+﻿namespace MotivateMe.Web.Controllers
 {
     using AutoMapper.QueryableExtensions;
 
     using MotivateMe.Data.Common.Repository;
     using MotivateMe.Data.Models;
     using MotivateMe.Web.ViewModels.Home;
+    using MotivateMe.Data;
 
-    using System.Web.Mvc;
     using System.Linq;
+    using System.Web.Mvc;
 
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private IRepository<Story> stories;
-
-        public HomeController(IRepository<Story> stories)
+        public HomeController(IMotivateMeData data)
+            : base(data)
         {
-            this.stories = stories;
+
         }
 
         public ActionResult Index()
         {
-            var stories = this.stories.All()
+            var stories = this.Data.Stories.All()
                 .OrderByDescending(s => s.CreatedOn)
                 .Take(6)
                 .Project()
                 .To<IndexStoryViewModel>()
                 .ToList();
 
-            return View(stories);
+            var campaigns= this.Data.Campaigns.All()
+                .OrderByDescending(s => s.CreatedOn)
+                .Take(6)
+                .Project()
+                .To<IndexCampaignViewModel>()
+                .ToList();
+
+            var articles = this.Data.Articles.All()
+                .OrderByDescending(s => s.CreatedOn)
+                .Take(6)
+                .Project()
+                .To<IndexArticleViewModel>()
+                .ToList();
+
+            var tips = this.Data.Tips.All()
+                .OrderByDescending(s => s.CreatedOn)
+                .Take(6)
+                .Project()
+                .To<IndexTipViewModel>()
+                .ToList();
+
+            ViewBag.Campaigns = campaigns;
+            ViewBag.Stories = stories;
+            ViewBag.Tips = tips;
+            ViewBag.Articles = articles;
+
+            return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "";
 
             return View();
         }

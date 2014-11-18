@@ -1,0 +1,8 @@
+﻿@model IEnumerable<MotivateMe.Web.ViewModels.Home.IndexTipViewModel>
+@foreach (var tip in Model)
+{
+    <div class="row jumbotron body-content">
+        <h3><a href="\Tips\Details\@tip.Id">@tip.Content</a></h3>
+        <div> By <strong>@tip.AuthorName</strong></div>
+    </div>
+}

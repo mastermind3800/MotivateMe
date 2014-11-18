@@ -1,0 +1,9 @@
+﻿@model IEnumerable<MotivateMe.Web.ViewModels.Home.IndexCampaignViewModel>
+@foreach (var campaign in Model)
+{
+    <div class="row jumbotron body-content">
+        <h3><a href="\Campaigns\Details\@campaign.Id">@campaign.Title</a></h3>
+        <p>Goal: @campaign.Goal</p>
+        <div>Initiated By <strong>@campaign.AuthorName</strong> at <span class="label label-primary">@campaign.CreatedOn</span></div>
+    </div>
+}

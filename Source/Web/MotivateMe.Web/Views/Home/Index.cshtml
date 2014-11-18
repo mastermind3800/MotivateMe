@@ -1,20 +1,34 @@
-﻿@model IList<MotivateMe.Web.ViewModels.Home.IndexStoryViewModel>
+﻿@using MotivateMe.Web.ViewModels.Home
 @{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
-    
-    
-    <h2>Newest Stories</h2>
-    @foreach (var story in Model)
-    {
-        <div class="row jumbotron body-content">
-            <h3><a href="\Stories\Details\@story.Id">@story.Title</a></h3>
-            <p>@story.ShortContent</p>
-            <div>Created By <strong>@story.AuthorName</strong> at <span class="label label-primary">@story.CreatedOn</span></div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Newest Stories</h2>
+            <hr />
+            @Html.Partial("_LatestStoriesPartial", ViewBag.Stories as ICollection<IndexStoryViewModel>)
         </div>
-    }
-       
+
+        <div class="col-md-6">
+            <h2>Newest Campaigns</h2>
+            <hr />
+            @Html.Partial("_LatestCampaignsPartial", ViewBag.Campaigns as ICollection<IndexCampaignViewModel>)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Newest Articles</h2>
+            <hr />
+            @Html.Partial("_LatestArticlesPartial", ViewBag.Articles as ICollection<IndexArticleViewModel>)
+        </div>
+        <div class="col-md-6">
+            <h2>Newest Tips</h2>
+            <hr />
+            @Html.Partial("_LatestTipsPartial", ViewBag.Tips as ICollection<IndexTipViewModel>)
+        </div>
+    </div>
 </div>
 

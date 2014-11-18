@@ -1,0 +1,9 @@
+﻿@model IEnumerable<MotivateMe.Web.ViewModels.Home.IndexArticleViewModel>
+@foreach (var article in Model)
+{
+    <div class="row jumbotron body-content">
+        <h3><a href="\Articles\Details\@article.Id">@article.Title</a></h3>
+        <p>Goal: @article.Content</p>
+        <div>Initiated By <strong>@article.AuthorName</strong> at <span class="label label-primary">@article.CreatedOn</span></div>
+    </div>
+}

@@ -223,7 +223,10 @@
     <Compile Include="ViewModels\Campaigns\CreateCampaignViewModel.cs" />
     <Compile Include="ViewModels\Comments\PostCommentViewModel.cs" />
     <Compile Include="ViewModels\Home\CreateFeedbackInputModel.cs" />
+    <Compile Include="ViewModels\Home\IndexArticleViewModel.cs" />
+    <Compile Include="ViewModels\Home\IndexCampaignViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexStoryViewModel.cs" />
+    <Compile Include="ViewModels\Home\IndexTipViewModel.cs" />
     <Compile Include="ViewModels\Tips\ListTipViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1163,6 +1166,10 @@
     <Content Include="Views\Campaigns\_PostCommentPartial.cshtml" />
     <Content Include="Views\Shared\_CommentPartial.cshtml" />
     <Content Include="Views\Shared\_FeedbackInputPartial.cshtml" />
+    <Content Include="Views\Shared\_LatestStoriesPartial.cshtml" />
+    <Content Include="Views\Shared\_LatestCampaignsPartial.cshtml" />
+    <Content Include="Views\Shared\_LatestArticlesPartial.cshtml" />
+    <Content Include="Views\Shared\_LatestTipsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

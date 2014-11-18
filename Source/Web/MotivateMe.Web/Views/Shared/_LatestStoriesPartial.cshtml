@@ -1,0 +1,9 @@
+﻿@model IEnumerable<MotivateMe.Web.ViewModels.Home.IndexStoryViewModel>
+@foreach (var story in Model)
+{
+    <div class="row jumbotron body-content">
+        <h3><a href="\Stories\Details\@story.Id">@story.Title</a></h3>
+        <p>@story.ShortContent</p>
+        <div>Created By <strong>@story.AuthorName</strong> at <span class="label label-primary">@story.CreatedOn</span></div>
+    </div>
+}
