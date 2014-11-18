@@ -1219,7 +1219,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1540</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1540/</IISUrl>
+          <IISUrl>http://localhost:7735/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

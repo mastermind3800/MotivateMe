@@ -35,7 +35,8 @@
                     <li>@Html.ActionLink("Forum", "AllForumPosts", new { controller = "ForumPosts", area = "Forum" })</li>
                     @if (this.User.IsInRole(MotivateMe.Data.Common.GlobalConstants.AdministratorRoleName))
                     {
-                        <li>@Html.ActionLink("Admin", "Navigation", new { controller = "Home", area = "Administration" })</li>
+                        <li>@Html.ActionLink("Admin", "Index", new { controller = "Home", area = "Administration" })</li>
+                        @RenderSection("menu", false)
                     }
                     
                 </ul>
